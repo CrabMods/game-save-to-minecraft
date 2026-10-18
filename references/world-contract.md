@@ -38,3 +38,20 @@ and capability records; compiler output alone is not a running Minecraft world.
 The target emission contract must state supported transform/material forms and
 require a bake or explicit unresolved outcome for the others. Only completed
 outcomes enter the accepted source coverage denominator.
+
+## Validate before assembling at scale
+
+| Boundary | Required handling |
+| --- | --- |
+| Missing definitions/resources or duplicate instance identities | Retain the failing source record and repair its binding; do not invent a placeholder and count it as migrated |
+| Empty geometry/collision | Distinguish an intentionally invisible or collision-free component from failed decoding. Preserve selection and state when the capability needs them |
+| Nonuniform scale, reflection or shear | Bake the unsupported transform into geometry, normals, collision and interaction sockets together, or keep it explicitly unresolved |
+| Large or far-away coordinates | Check target precision, height and border limits before writing. Use a documented coordinate mapping when needed, preserving relative layout; do not truncate or silently omit distant objects |
+| Many pieces sharing a block/chunk | Keep stable per-instance ownership, selection and state independently of cell fragments and reusable definitions; do not merge unrelated inventories or interactions |
+| Partial/repeated import | Reconcile actual fragments and stable IDs; completed state must not duplicate an object or reset player-edited state |
+
+Validate extracted resource paths within the selected output root before writing;
+reject traversal or conflicting output identities. Keep original carriers and
+the mapping available for diagnosis. Reconcile selected, recovered, excluded and
+unresolved source records with reasons; never shrink a denominator merely because
+an export omitted records.

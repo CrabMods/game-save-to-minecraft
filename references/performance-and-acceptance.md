@@ -5,6 +5,12 @@ Record CPU/render work, actual frame intervals, tick cost, allocations, texture
 residency and mesh/cache behavior as applicable. PNG archive size does not measure
 decoded texture memory; a CPU microbenchmark does not establish client FPS.
 
+Derive budgets from the selected scene, target hardware and the user's requested
+play experience. Resolve blocking correctness/coverage failures before claiming
+an optimization. Do not assume an uncapped FPS target or repeatedly tune a small
+empty scene while the selected world remains unusable. See
+[planning and recovery](planning-and-recovery.md) for effort and scope decisions.
+
 ## World-scale optimizations
 
 - Separate a visible object's owner from cells that only carry collision or
@@ -20,6 +26,11 @@ decoded texture memory; a CPU microbenchmark does not establish client FPS.
   reference path. Keep a compatible backend for unsupported GPU features.
 - Optimize optional-mod interaction only after inspecting the installed version.
   Preserve ordinary entities and world maps; measure that the adapter is exercised.
+
+Distinguish a forced compatibility code path from a run on the claimed hardware
+or OpenGL context. Record the actual path, driver and capability checks. If a
+shader, renderer or optional-mod combination is unavailable, keep that coverage
+open rather than treating compilation or a reference path as compatibility proof.
 
 ## Matched experiment
 

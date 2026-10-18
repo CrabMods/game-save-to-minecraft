@@ -23,8 +23,9 @@ runtime evidence. Preserve failed reads in the export and fail its acceptance.
 ## Minimal adapter interface
 
 `SourceInputs` names a save, optional install and version. A `SourceAdapter`
-implements `probe`, `export_scene` and `verify_source` (see the package's
-`adapters.py`). The original `examples/demo_source.py` shows a complete small
+implements `probe`, `export_scene` and `verify_source` (see the reference
+implementation's [adapters.py](https://github.com/crabsatellite/GameSave2Minecraft/blob/main/src/gamesave2minecraft/adapters.py)).
+Its [original demo adapter](https://github.com/crabsatellite/GameSave2Minecraft/blob/main/examples/demo_source.py) shows a complete small
 adapter. For a new game, the agent writes an implementation after recovering its
 format; it does not substitute the demo decoder for an unknown source.
 
@@ -37,6 +38,14 @@ Use the source engine to load its own serialization when direct binary decoding
 is fragile. Wait for actual scene streaming and complete object enumeration.
 Prefer a one-shot exporter with a bounded lifecycle. Progress heartbeats and a
 plugin binary are insufficient evidence of a completed export.
+
+If the source runtime is needed, verify the exporter against the matching
+client/server artifact and version rather than guessing interchangeable layouts.
+Run against a preserved input in an authorized test context. Do not attach an
+experimental exporter to the user's live session or make its save writable as
+a side effect of investigation. Missing tool, unsupported format, incomplete
+streaming and host denial are different blockers; follow
+[planning and recovery](planning-and-recovery.md) for the observed boundary.
 
 ## Binding pitfalls
 

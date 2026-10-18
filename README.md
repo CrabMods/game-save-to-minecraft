@@ -41,6 +41,8 @@ Example request:
 - [World contract](references/world-contract.md)
 - [Interaction mapping](references/interaction-rules.md)
 - [Performance and acceptance](references/performance-and-acceptance.md)
+- [Planning, effort, user decisions and recovery](references/planning-and-recovery.md)
+- [GameTest, packaged-client interactions and visual verification](references/runtime-verification.md)
 
 ## Origin and license
 
