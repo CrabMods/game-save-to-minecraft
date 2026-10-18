@@ -2,6 +2,11 @@
 
 **An open-source Skill for coding agents to migrate saved game worlds into playable Minecraft.**
 
+[![Watch the GameSave2Minecraft demo on YouTube](https://img.youtube.com/vi/tzVSkMqvyoQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=tzVSkMqvyoQ)
+
+[Watch the 80-second demo](https://www.youtube.com/watch?v=tzVSkMqvyoQ): a V Rising
+saved-castle migration captured in Minecraft, with mapped object interactions.
+
 Supply a save and its matching local game installation. The agent investigates
 the source, writes an adapter, maps objects and interactions to Minecraft, and
 checks source coverage, persistence, rendering and runtime cost. A new source
